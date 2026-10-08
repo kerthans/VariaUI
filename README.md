@@ -120,6 +120,8 @@ Agent-oriented discovery and installation are part of the planned evolution, not
 
 We are establishing the first style collections, component quality standards, and distribution conventions.
 
+The first experimental collection is **Modern Bauhaus**: functional geometry, bold typography, and deliberate composition, applied to a creative portfolio homepage.
+
 The initial focus is deliberately small:
 
 1. Develop a coherent style collection with reusable components.
