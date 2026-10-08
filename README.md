@@ -1,4 +1,4 @@
-# [Project Name]
+# VariaUI
 
 **Discover by style. Build with character.**
 
@@ -16,7 +16,7 @@ We believe a website should be more than a collection of functional elements.
 
 Like a thoughtfully designed living space, a website expresses character through its typography, composition, materials, colors, interactions, and the relationships between its parts.
 
-**[Project Name] explores a different way to discover and use web components: start with the style, not the element.**
+**VariaUI explores a different way to discover and use web components: start with the style, not the element.**
 
 Instead of asking only, "Which button or card do I need?", start by asking:
 
@@ -24,7 +24,7 @@ Instead of asking only, "Which button or card do I need?", start by asking:
 
 ## The Idea
 
-[Project Name] is a curated collection of expressive, reusable web components, organized around distinct visual styles.
+VariaUI is a curated collection of expressive, reusable web components, organized around distinct visual styles.
 
 Imagine exploring a showroom of digital design:
 
