@@ -11,4 +11,14 @@ export const recipes = [
     components: ["bauhaus-manifesto-hero", "bauhaus-project-grid", "bauhaus-section-index"],
     status: "experimental",
   },
+  {
+    id: "outfitter-landing",
+    name: "Outfitter Landing",
+    styleId: "outdoor",
+    description:
+      "A complete brand landing page composed from the Trailhead Hero, Gear Catalog, and Field Journal.",
+    scenario: "Landing page for an outdoor brand or independent shop.",
+    components: ["outdoor-trailhead-hero", "outdoor-gear-catalog", "outdoor-field-journal"],
+    status: "experimental",
+  },
 ] as const satisfies readonly RecipeEntry[];

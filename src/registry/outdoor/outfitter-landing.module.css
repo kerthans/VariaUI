@@ -1,0 +1,60 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(4rem, 9vw, 7rem) var(--od-gutter) 2rem;
+  background: var(--od-forest);
+  color: var(--od-bone);
+}
+
+.signoff {
+  font-size: clamp(2.75rem, 8vw, 7rem);
+  font-weight: 340;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+}
+
+.emphasis {
+  color: var(--od-ochre);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.columns {
+  display: grid;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px dashed rgb(241 235 221 / 0.25);
+}
+
+.columns dt {
+  margin-bottom: 0.75rem;
+  color: var(--od-ochre);
+}
+
+.columns dd {
+  max-width: 22rem;
+  color: rgb(241 235 221 / 0.82);
+  line-height: 1.55;
+}
+
+.link {
+  border-bottom: 1px solid currentColor;
+  color: var(--od-bone);
+}
+
+.note {
+  color: rgb(241 235 221 / 0.55);
+  font-size: 0.6875rem;
+}
+
+@media (min-width: 48rem) {
+  .columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

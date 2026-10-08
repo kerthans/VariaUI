@@ -10,6 +10,16 @@ const original = {
   notes: "Designed and implemented for VariaUI. Uses Jost (SIL Open Font License 1.1) via Fontsource.",
 } as const;
 
+const outdoorThemeFiles = ["src/registry/outdoor/theme.ts", "src/registry/outdoor/theme.module.css"];
+
+const outdoorDependencies = ["@fontsource-variable/fraunces", "@fontsource/ibm-plex-mono"];
+
+const outdoorOriginal = {
+  type: "original",
+  notes:
+    "Designed and implemented for VariaUI. Uses Fraunces and IBM Plex Mono (SIL Open Font License 1.1) via Fontsource. Illustrations are generated SVG.",
+} as const;
+
 export const components = [
   {
     id: "bauhaus-manifesto-hero",
@@ -78,6 +88,85 @@ export const components = [
     dependencies: ["@fontsource-variable/jost"],
     license: "TBD",
     provenance: original,
+    status: "experimental",
+  },
+  {
+    id: "outdoor-trailhead-hero",
+    name: "Trailhead Hero",
+    category: "hero",
+    primaryStyle: "outdoor",
+    styleIds: ["outdoor"],
+    description:
+      "Full-bleed landscape opening with a navigation bar, serif headline with italic emphasis, two actions, and a field card of product specifications.",
+    intent: "Open a brand or product page with a sense of place before the sales pitch.",
+    useCases: ["outdoor or lifestyle brand", "product launch", "travel or expedition page"],
+    traits: [
+      "full-bleed photo or illustrated ridge plate",
+      "light serif headline with italic accent",
+      "8/4 split with spec card",
+      "film grain and legibility gradients",
+    ],
+    recommendedWith: ["outdoor-gear-catalog", "outdoor-field-journal"],
+    avoidWith: ["geometric primary-color heroes", "centered SaaS hero layouts", "neon gradients"],
+    files: [
+      "src/registry/outdoor/trailhead-hero.tsx",
+      "src/registry/outdoor/trailhead-hero.module.css",
+      ...outdoorThemeFiles,
+    ],
+    dependencies: outdoorDependencies,
+    license: "TBD",
+    provenance: outdoorOriginal,
+    status: "experimental",
+  },
+  {
+    id: "outdoor-gear-catalog",
+    name: "Gear Catalog",
+    category: "gallery",
+    primaryStyle: "outdoor",
+    styleIds: ["outdoor"],
+    description:
+      "Catalog of product cards with numbered plates, stamps, spec tables, prices, and colorway swatches. Topographic plates stand in when there is no photograph.",
+    intent: "Present a small product range like a field catalog, where details earn trust.",
+    useCases: ["product range", "shop highlights", "equipment list", "menu or collection"],
+    traits: ["numbered plates", "dashed spec tables", "colorway swatches", "generated contour plates"],
+    recommendedWith: ["outdoor-trailhead-hero", "outdoor-field-journal"],
+    avoidWith: ["glossy e-commerce carousels", "discount badges", "dense masonry walls"],
+    files: [
+      "src/registry/outdoor/gear-catalog.tsx",
+      "src/registry/outdoor/gear-catalog.module.css",
+      ...outdoorThemeFiles,
+    ],
+    dependencies: outdoorDependencies,
+    license: "TBD",
+    provenance: outdoorOriginal,
+    status: "experimental",
+  },
+  {
+    id: "outdoor-field-journal",
+    name: "Field Journal",
+    category: "content",
+    primaryStyle: "outdoor",
+    styleIds: ["outdoor"],
+    description:
+      "Stages of a route drawn as an elevation profile, followed by short journal entries with markers, elevations, and places.",
+    intent: "Tell a story or process as a journey with a visible shape.",
+    useCases: ["expedition or trip report", "product testing story", "roadmap or process", "itinerary"],
+    traits: [
+      "elevation profile generated from data",
+      "numbered route markers",
+      "dashed trail line on mobile",
+      "route-aligned columns on desktop",
+    ],
+    recommendedWith: ["outdoor-trailhead-hero", "outdoor-gear-catalog"],
+    avoidWith: ["generic timeline dots", "icon-heavy feature grids", "chart libraries"],
+    files: [
+      "src/registry/outdoor/field-journal.tsx",
+      "src/registry/outdoor/field-journal.module.css",
+      ...outdoorThemeFiles,
+    ],
+    dependencies: outdoorDependencies,
+    license: "TBD",
+    provenance: outdoorOriginal,
     status: "experimental",
   },
 ] as const satisfies readonly ComponentEntry[];

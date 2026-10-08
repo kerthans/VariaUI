@@ -216,6 +216,8 @@ CSS Modules 通过 shadcn Registry 分发到其他项目（Vite 等）的做法�
 
 第一阶段完成后，不急着写第四个包豪斯组件，而是做一个视觉语言差异足够大的第二风格切片（如 Outdoor 或 Bohemian）。只有第二套截然不同的风格也能顺畅进入同一套架构，才能证明 VariaUI 是 Style-first 组件库，而不是一个包豪斯主题网站。
 
+第二风格切片已选定 **Outdoor**，场景为户外品牌落地页（Outfitter Landing），组件为 `outdoor-trailhead-hero`、`outdoor-gear-catalog`、`outdoor-field-journal`。它沿用同一套目录元数据、作用域变量（`--od-*`）与 Recipe 结构，未修改展示站的路由或页面模板。
+
 ## 10. 决策记录
 
 | 决策 | 选择 | 不选 |

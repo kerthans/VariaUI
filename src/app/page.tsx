@@ -238,19 +238,19 @@ export default async function Home() {
         </section>
 
         {/* Styles */}
-        <section className="border-b">
+        <section id="styles" className="scroll-mt-14 border-b">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Styles</h2>
             <p className="mt-4 max-w-2xl text-muted-foreground">
               Few, deliberately different, and carefully made. Quality over count.
             </p>
-            <ul className="mt-10 grid gap-4 lg:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+            <ul className="mt-10 grid gap-4 md:grid-cols-2">
               {allStyles.map((style) => {
                 const hero = recipeSections[recipesForStyle(style.id)[0]?.id ?? ""]?.[0];
                 return (
                   <li key={style.id} className="group relative overflow-hidden rounded-xl border">
                     {hero && (
-                      <ScaledPreview className="aspect-[16/8] border-b">{hero.render()}</ScaledPreview>
+                      <ScaledPreview className="aspect-[16/10] border-b">{hero.render()}</ScaledPreview>
                     )}
                     <div className="flex flex-wrap items-end justify-between gap-4 p-6">
                       <div>
@@ -283,14 +283,6 @@ export default async function Home() {
                   </li>
                 );
               })}
-              <li className="flex flex-col justify-center rounded-xl border border-dashed p-6">
-                <p className="text-xs uppercase tracking-wide text-muted-foreground">In progress</p>
-                <p className="mt-2 font-medium">The next style</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  A second, deliberately different design language is planned. It is not published
-                  yet — it exists to prove the system is truly style-first, not a single theme.
-                </p>
-              </li>
             </ul>
           </div>
         </section>

@@ -37,4 +37,41 @@ export const styles = [
     ],
     status: "experimental",
   },
+  {
+    id: "outdoor",
+    name: "Outdoor",
+    tagline: "Natural materials. Earthy tones. Field-tested details.",
+    summary:
+      "Forest, bone, and sand with clay and ochre accents. Editorial serif headlines, utilitarian mono labels, topographic lines, and quiet film grain. It should feel carried, not rendered.",
+    language: {
+      typography:
+        "Optical-size serif (Fraunces) for headlines, light and sentence case with italic emphasis; IBM Plex Mono for specs, labels, and markers.",
+      color:
+        "Forest #1e2b23, bone #f1ebdd, and sand #e3d8bf carry the page. Clay #a3471f on light grounds and ochre #d39a4a on dark grounds mark actions and emphasis.",
+      geometry: "Contour rings, ridge lines, elevation profiles, and dashed trail lines. Small 6px radii.",
+      layout:
+        "Editorial 7/5 headers, full-bleed landscape plates, catalog cards with spec tables, and stages laid out along a route.",
+      texture: "Subtle film grain and dashed field-guide rules. No glass, neon, or glossy gradients.",
+      imagery: "Landscape and product photography; illustrated ridges and topographic plates as defaults.",
+      motion: "Slow, small scale and color shifts on hover. Disabled under reduced motion.",
+      mood: "Grounded, durable, quietly adventurous.",
+    },
+    palette: [
+      { name: "Forest", value: "#1e2b23" },
+      { name: "Bone", value: "#f1ebdd" },
+      { name: "Sand", value: "#e3d8bf" },
+      { name: "Moss", value: "#56653f" },
+      { name: "Clay", value: "#a3471f" },
+      { name: "Ochre", value: "#d39a4a" },
+    ],
+    typeface: "Fraunces",
+    avoid: [
+      "stock adventure clichés like compasses and mountain icons as decoration",
+      "neon or high-saturation accents",
+      "glassmorphism",
+      "heavy sans-serif tech headlines",
+      "perfectly flat, sterile surfaces",
+    ],
+    status: "experimental",
+  },
 ] as const satisfies readonly StyleEntry[];

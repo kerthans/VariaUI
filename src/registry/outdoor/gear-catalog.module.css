@@ -1,0 +1,254 @@
+.section {
+  padding: clamp(4rem, 9vw, 7.5rem) var(--od-gutter);
+}
+
+.header {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+  color: var(--od-clay);
+}
+
+.title {
+  max-width: 14ch;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 380;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.intro {
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  gap: 1.25rem;
+}
+
+.description {
+  max-width: 30rem;
+  color: var(--od-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.action {
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid currentColor;
+  color: var(--od-clay);
+}
+
+.grid {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: var(--od-line);
+  border-radius: var(--od-radius);
+  background: #f7f2e7;
+  transition: border-color 200ms var(--od-ease);
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--od-ink) 45%, transparent);
+}
+
+.card:has(.link:focus-visible) {
+  outline: 2px solid var(--od-clay);
+  outline-offset: 3px;
+}
+
+.plate {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: var(--od-line);
+}
+
+.sand {
+  background: var(--od-sand);
+  color: var(--od-moss);
+}
+
+.lichen {
+  background: #c9c8a4;
+  color: var(--od-forest);
+}
+
+.clay {
+  background: #d9b49a;
+  color: var(--od-clay);
+}
+
+.forest {
+  background: var(--od-forest);
+  color: var(--od-sand-deep);
+}
+
+.image,
+.contours {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 400ms var(--od-ease);
+}
+
+.contours {
+  fill: none;
+  stroke: currentColor;
+  stroke-opacity: 0.7;
+  transition: transform 600ms var(--od-ease);
+}
+
+.card:hover .image,
+.card:hover .contours {
+  transform: scale(1.04);
+}
+
+.mark {
+  stroke-width: 1.6;
+  stroke-opacity: 1;
+}
+
+.number,
+.badge {
+  position: absolute;
+  top: 0.875rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.6875rem;
+}
+
+.number {
+  left: 0.875rem;
+  background: var(--od-bone);
+  color: var(--od-ink);
+}
+
+.badge {
+  right: 0.875rem;
+  border: 1px dashed currentColor;
+  background: var(--od-bone);
+  color: var(--od-clay);
+}
+
+.body {
+  display: grid;
+  flex: 1;
+  align-content: start;
+  gap: 1.25rem;
+  padding: 1.25rem;
+}
+
+.heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.category {
+  margin-bottom: 0.4rem;
+  color: var(--od-muted);
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 420;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.price {
+  font-family: var(--od-mono);
+  font-size: 0.9375rem;
+  white-space: nowrap;
+}
+
+.specs {
+  display: grid;
+  border-top: 1px dashed color-mix(in srgb, var(--od-ink) 25%, transparent);
+  font-family: var(--od-mono);
+  font-size: 0.8125rem;
+}
+
+.spec {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed color-mix(in srgb, var(--od-ink) 25%, transparent);
+}
+
+.spec dt {
+  color: var(--od-muted);
+}
+
+.spec dd {
+  text-align: right;
+}
+
+.colors {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.swatch {
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 1px solid color-mix(in srgb, var(--od-ink) 30%, transparent);
+  border-radius: 50%;
+}
+
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  .header {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: end;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .image,
+  .contours {
+    transition: none;
+  }
+
+  .card:hover .image,
+  .card:hover .contours {
+    transform: none;
+  }
+}
