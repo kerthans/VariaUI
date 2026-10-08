@@ -1,0 +1,32 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.footer {
+  display: grid;
+  gap: 1.5rem;
+  padding: clamp(3rem, 8vw, 6rem) var(--mb-gutter);
+  background: var(--mb-ink);
+  color: var(--mb-paper);
+}
+
+.mail {
+  justify-self: start;
+  font-size: clamp(2rem, 7vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  overflow-wrap: anywhere;
+  border-bottom: var(--mb-rule-width) solid var(--mb-yellow);
+}
+
+.mail:focus-visible {
+  outline: 3px solid var(--mb-yellow);
+  outline-offset: 6px;
+}
+
+.note {
+  opacity: 0.7;
+}

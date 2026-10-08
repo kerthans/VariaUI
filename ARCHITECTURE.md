@@ -167,7 +167,13 @@ AI 能安装组件只是技术能力；**AI 能理解什么时候该用这个组
 }
 ```
 
-CSS Modules 通过 shadcn Registry 分发、并与 Tailwind v4 共存的具体做法，需要在 Milestone 2 的安装测试中验证。
+已在实现中确认的约束：
+
+- 风格主题的基础样式（背景、文字色、字体、元素重置）必须是零优先级（写在 `:where(.root)` 里），只有 CSS 变量留在 `.root` 上。否则主题样式与组件类优先级相同，谁生效取决于样式表加载顺序。
+- 组件必须显式写出边框颜色等值，不能依赖宿主项目的全局样式（如 shadcn 的 `* { border-color }`）。
+- 展示站中，Tailwind 的 Turbopack loader 必须排除 `*.module.css`，否则 CSS Modules 在生产构建中会丢失类名（见 `next.config.ts`）。
+
+CSS Modules 通过 shadcn Registry 分发到其他项目（Vite 等）的做法，仍需在 Milestone 2 的安装测试中验证。
 
 ## 7. 首个 Collection：Modern Bauhaus / Creative Portfolio
 

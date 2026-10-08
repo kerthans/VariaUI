@@ -9,7 +9,8 @@
 - 与上述文档冲突的需求或实现，先向维护者确认，不要自行变更产品方向或架构。
 - 修改战略或产品定义时，先改 `PROJECT_BRIEF.md`，再同步到 `ARCHITECTURE.md` 和 `README.md`。
 - 展示站与分发使用同一份组件源码；可分发组件不依赖 `next/*` 等框架特性。
-- 风格变量必须限定在该风格的作用域内，不写入全局样式，不使用全局 Theme Provider。
+- 风格变量必须限定在该风格的作用域内，不写入全局样式，不使用全局 Theme Provider。主题基础样式写在 `:where(.root)` 中保持零优先级。
+- `src/registry/**` 内只能用相对路径导入，不能导入 `next/*` 或 `@/*`（ESLint 会拦截）。
 - 严格按里程碑推进，不提前创建空目录、空页面或后续阶段的功能。
 - 项目名称为 VariaUI，不要擅自改名或使用其他名称。
 - 不要编造安装命令、组件数量、许可证、用户数据或尚未实现的功能。
@@ -24,6 +25,8 @@
 - `pnpm build`：生产构建
 
 提交前至少保证 `pnpm lint`、`pnpm typecheck`、`pnpm build` 通过。
+
+本地验证生产构建时注意：Next 会把进程名改为 `next-server`，`pkill -f "next start"` 杀不掉旧服务，请按端口结束进程（如 `lsof -ti tcp:3000 | xargs kill`），否则看到的是旧构建。
 
 shadcn CLI 请用 `npx shadcn@latest`；`pnpm dlx shadcn` 会因依赖解析失败而报错。若本机配置了 HTTP 代理导致 CLI 请求被断开，可临时去掉代理变量执行。
 

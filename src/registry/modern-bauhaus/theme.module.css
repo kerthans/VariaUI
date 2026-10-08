@@ -1,0 +1,71 @@
+.root {
+  --mb-paper: #f2ede1;
+  --mb-paper-deep: #e6dfcf;
+  --mb-ink: #141414;
+  --mb-muted: #55524b;
+  --mb-red: #c8341f;
+  --mb-blue: #1d4b9b;
+  --mb-yellow: #f0b400;
+
+  --mb-rule-width: 2px;
+  --mb-rule: var(--mb-rule-width) solid var(--mb-ink);
+  --mb-hairline: 1px solid color-mix(in srgb, var(--mb-ink) 22%, transparent);
+
+  --mb-font: "Jost Variable", "Jost", "Futura", "Avenir Next", "Century Gothic",
+    system-ui, sans-serif;
+  --mb-gutter: clamp(1rem, 4vw, 3rem);
+  --mb-ease: cubic-bezier(0.2, 0, 0, 1);
+}
+
+:where(.root) {
+  box-sizing: border-box;
+  margin: 0;
+  background: var(--mb-paper);
+  color: var(--mb-ink);
+  font-family: var(--mb-font);
+  font-feature-settings: "kern", "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+:where(.root) :where(*, *::before, *::after) {
+  box-sizing: inherit;
+}
+
+:where(.root) :where(h1, h2, h3, h4, p, ol, ul, li, figure, dl, dd) {
+  margin: 0;
+  padding: 0;
+}
+
+:where(.root) :where(a) {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(.root) :where(a:focus-visible) {
+  outline: 3px solid var(--mb-blue);
+  outline-offset: 3px;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.accentRed {
+  --mb-accent: var(--mb-red);
+}
+
+.accentBlue {
+  --mb-accent: var(--mb-blue);
+}
+
+.accentYellow {
+  --mb-accent: var(--mb-yellow);
+}
+
+.accentInk {
+  --mb-accent: var(--mb-ink);
+}

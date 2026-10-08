@@ -1,0 +1,156 @@
+.section {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: var(--mb-rule);
+}
+
+.aside {
+  padding: clamp(3rem, 8vw, 7rem) var(--mb-gutter) 2rem;
+}
+
+.asideInner {
+  display: grid;
+  gap: 1rem;
+}
+
+.title {
+  font-size: clamp(2.25rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 36ch;
+  color: var(--mb-muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.list {
+  list-style: none;
+  border-top: var(--mb-rule);
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 0.5rem 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem) var(--mb-gutter);
+  border-bottom: var(--mb-rule);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.row::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: 0.5rem;
+  background: var(--mb-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms var(--mb-ease);
+}
+
+.row:hover::before,
+.row:focus-within::before {
+  transform: scaleX(1);
+}
+
+.number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.6;
+}
+
+.body {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.itemTitle {
+  font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.row:has(.link:focus-visible) {
+  outline: 3px solid var(--mb-blue);
+  outline-offset: -3px;
+}
+
+.itemText {
+  max-width: 52ch;
+  color: var(--mb-muted);
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 2;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.tag {
+  padding: 0.35rem 0.6rem;
+  border: var(--mb-rule);
+}
+
+@media (min-width: 64rem) {
+  .section {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .aside {
+    grid-column: 1 / span 5;
+    padding-bottom: clamp(3rem, 8vw, 7rem);
+    border-right: var(--mb-rule);
+  }
+
+  .asideInner {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .list {
+    grid-column: 6 / -1;
+    border-top: 0;
+  }
+
+  .row {
+    grid-template-columns: 4.5rem minmax(0, 1fr) minmax(0, 12rem);
+    align-items: start;
+  }
+
+  .tags {
+    grid-column: 3;
+    justify-content: flex-end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row::before {
+    transition: none;
+  }
+}
