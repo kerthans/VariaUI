@@ -13,3 +13,26 @@
 - 严格按里程碑推进，不提前创建空目录、空页面或后续阶段的功能。
 - 项目名称为 VariaUI，不要擅自改名或使用其他名称。
 - 不要编造安装命令、组件数量、许可证、用户数据或尚未实现的功能。
+
+## 常用命令
+
+包管理器为 pnpm。
+
+- `pnpm dev`：启动展示站
+- `pnpm lint`：ESLint
+- `pnpm typecheck`：生成路由类型并运行 `tsc --noEmit`
+- `pnpm build`：生产构建
+
+提交前至少保证 `pnpm lint`、`pnpm typecheck`、`pnpm build` 通过。
+
+shadcn CLI 请用 `npx shadcn@latest`；`pnpm dlx shadcn` 会因依赖解析失败而报错。若本机配置了 HTTP 代理导致 CLI 请求被断开，可临时去掉代理变量执行。
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
