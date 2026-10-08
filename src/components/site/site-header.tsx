@@ -8,7 +8,7 @@ export function SiteHeader() {
           VariaUI
         </Link>
         <nav aria-label="Site" className="flex items-center gap-6 text-sm text-muted-foreground">
-          <Link href="/styles/modern-bauhaus" className="hover:text-foreground">
+          <Link href="/styles/modern-bauhaus" prefetch className="hover:text-foreground">
             Styles
           </Link>
           <Link href="/components" className="hover:text-foreground">

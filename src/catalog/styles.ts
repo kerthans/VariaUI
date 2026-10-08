@@ -20,6 +20,14 @@ export const styles = [
       motion: "Short, functional state changes only. Disabled under reduced motion.",
       mood: "Confident, constructive, editorial.",
     },
+    palette: [
+      { name: "Paper", value: "#f2ede1" },
+      { name: "Ink", value: "#141414" },
+      { name: "Red", value: "#c8341f" },
+      { name: "Blue", value: "#1d4b9b" },
+      { name: "Yellow", value: "#f0b400" },
+    ],
+    typeface: "Jost",
     avoid: [
       "primary-color circle clichés used as decoration",
       "glassmorphism",

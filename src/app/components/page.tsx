@@ -31,6 +31,7 @@ export default function ComponentsPage() {
                   <li key={component.id}>
                     <Link
                       href={`/components/${component.id}`}
+                      prefetch
                       className="flex flex-wrap items-baseline justify-between gap-2 px-5 py-4 hover:bg-muted/50"
                     >
                       <span className="font-medium">{component.name}</span>

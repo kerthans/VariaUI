@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
+import { PageSkeleton } from "@/components/site/page-skeleton";
 import { ScaledPreview } from "@/components/site/scaled-preview";
 import { SiteHeader } from "@/components/site/site-header";
 import {
@@ -37,7 +39,18 @@ const languageLabels = {
   mood: "Mood",
 } as const;
 
-export default async function StylePage({ params }: PageProps<"/styles/[slug]">) {
+export default function StylePage({ params }: PageProps<"/styles/[slug]">) {
+  return (
+    <>
+      <SiteHeader />
+      <Suspense fallback={<PageSkeleton />}>
+        <StyleView params={params} />
+      </Suspense>
+    </>
+  );
+}
+
+async function StyleView({ params }: { params: PageProps<"/styles/[slug]">["params"] }) {
   const { slug } = await params;
   const style = getStyle(slug);
   if (!style) notFound();
@@ -47,7 +60,6 @@ export default async function StylePage({ params }: PageProps<"/styles/[slug]">)
 
   return (
     <>
-      <SiteHeader />
       <main className="mx-auto w-full max-w-6xl px-6 py-16">
         <p className="text-sm text-muted-foreground">Style · {style.status}</p>
         <h1 className="mt-2 text-4xl font-semibold tracking-tight">{style.name}</h1>
@@ -77,6 +89,7 @@ export default async function StylePage({ params }: PageProps<"/styles/[slug]">)
                     </ScaledPreview>
                     <Link
                       href={`/recipes/${recipe.id}`}
+                      prefetch
                       className="absolute inset-0"
                       aria-label={`Enter ${recipe.name}`}
                     />
@@ -98,6 +111,7 @@ export default async function StylePage({ params }: PageProps<"/styles/[slug]">)
                             <li key={id}>
                               <Link
                                 href={`/components/${id}`}
+                                prefetch
                                 className="flex items-baseline gap-3 px-3 py-2.5 text-sm hover:bg-muted/50"
                               >
                                 <span className="font-mono text-xs text-muted-foreground">
@@ -115,6 +129,7 @@ export default async function StylePage({ params }: PageProps<"/styles/[slug]">)
                     </div>
                     <Link
                       href={`/recipes/${recipe.id}`}
+                      prefetch
                       className="mt-auto inline-flex w-fit items-center gap-2 rounded-md bg-foreground px-4 py-2 text-sm font-medium text-background hover:opacity-90"
                     >
                       Enter room →
@@ -149,6 +164,7 @@ export default async function StylePage({ params }: PageProps<"/styles/[slug]">)
                     </p>
                     <Link
                       href={`/components/${piece.id}`}
+                      prefetch
                       className="mt-1 block font-medium after:absolute after:inset-0 group-hover:underline"
                     >
                       {piece.name}

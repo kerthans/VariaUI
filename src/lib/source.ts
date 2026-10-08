@@ -29,6 +29,6 @@ export function readSourceFiles(files: readonly string[]): SourceFile[] {
 
 export async function highlight(code: string, fileName: string) {
   "use cache";
-  const lang = fileName.endsWith(".css") ? "css" : "tsx";
+  const lang = fileName.endsWith(".css") ? "css" : fileName.endsWith(".json") ? "json" : "tsx";
   return codeToHtml(code, { lang, theme: "github-light" });
 }

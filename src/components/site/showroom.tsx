@@ -31,7 +31,7 @@ export function Showroom({
       <div className="sticky top-14 z-30 border-b bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-6 py-3 text-sm">
           <p className="font-medium">
-            <Link href={styleHref} className="text-muted-foreground hover:text-foreground">
+            <Link href={styleHref} prefetch className="text-muted-foreground hover:text-foreground">
               {styleName}
             </Link>
             <span className="text-muted-foreground"> / </span>
@@ -43,6 +43,7 @@ export function Showroom({
               <li key={piece.id}>
                 <Link
                   href={`/components/${piece.id}`}
+                  prefetch
                   className="rounded-full border px-2.5 py-0.5 text-xs hover:bg-muted"
                 >
                   {piece.name}
@@ -75,6 +76,7 @@ export function PieceTag({ piece, children }: { piece?: ShowroomPiece; children:
       {visible && (
         <Link
           href={`/components/${piece.id}`}
+                  prefetch
           className="absolute left-1/2 top-3 z-20 flex -translate-x-1/2 items-center gap-3 rounded-lg border bg-background px-3 py-1.5 text-foreground shadow-lg hover:bg-muted"
         >
           <span className="text-[11px] uppercase tracking-wide text-muted-foreground">

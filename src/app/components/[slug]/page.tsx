@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense, type ReactNode } from "react";
 
 import { CopyButton } from "@/components/site/copy-button";
+import { PageSkeleton } from "@/components/site/page-skeleton";
 import { SiteHeader } from "@/components/site/site-header";
 import {
   allComponents,
@@ -50,7 +51,18 @@ function Chips({ items }: { items: readonly string[] }) {
   );
 }
 
-export default async function ComponentPage({ params }: PageProps<"/components/[slug]">) {
+export default function ComponentPage({ params }: PageProps<"/components/[slug]">) {
+  return (
+    <>
+      <SiteHeader />
+      <Suspense fallback={<PageSkeleton />}>
+        <ComponentView params={params} />
+      </Suspense>
+    </>
+  );
+}
+
+async function ComponentView({ params }: { params: PageProps<"/components/[slug]">["params"] }) {
   const { slug } = await params;
   const component = getComponent(slug);
   if (!component) notFound();
@@ -67,11 +79,10 @@ export default async function ComponentPage({ params }: PageProps<"/components/[
 
   return (
     <>
-      <SiteHeader />
       <main>
         <div className="mx-auto max-w-6xl px-6 pt-12">
           <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
-            <Link href={`/styles/${component.primaryStyle}`} className="hover:text-foreground">
+            <Link href={`/styles/${component.primaryStyle}`} prefetch className="hover:text-foreground">
               {style?.name ?? component.primaryStyle}
             </Link>
             <span> / </span>
@@ -104,7 +115,7 @@ export default async function ComponentPage({ params }: PageProps<"/components/[
                 <ul className="grid gap-1">
                   {component.recommendedWith.map((id) => (
                     <li key={id}>
-                      <Link href={`/components/${id}`} className="underline underline-offset-4 hover:text-foreground">
+                      <Link href={`/components/${id}`} prefetch className="underline underline-offset-4 hover:text-foreground">
                         {getComponent(id)?.name ?? id}
                       </Link>
                     </li>
@@ -119,7 +130,7 @@ export default async function ComponentPage({ params }: PageProps<"/components/[
                   <ul className="grid gap-1">
                     {rooms.map((room) => (
                       <li key={room.id}>
-                        <Link href={`/recipes/${room.id}`} className="underline underline-offset-4 hover:text-foreground">
+                        <Link href={`/recipes/${room.id}`} prefetch className="underline underline-offset-4 hover:text-foreground">
                           {room.name}
                         </Link>
                       </li>

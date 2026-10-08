@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
+import { PageSkeleton } from "@/components/site/page-skeleton";
 import { PieceTag, Showroom, type ShowroomPiece } from "@/components/site/showroom";
 import { SiteHeader } from "@/components/site/site-header";
 import { allRecipes, categoryLabels, getComponent, getRecipe, getStyle } from "@/lib/catalog";
@@ -25,7 +27,18 @@ function toPiece(componentId: string | undefined): ShowroomPiece | undefined {
     : undefined;
 }
 
-export default async function RecipePage({ params }: PageProps<"/recipes/[slug]">) {
+export default function RecipePage({ params }: PageProps<"/recipes/[slug]">) {
+  return (
+    <>
+      <SiteHeader />
+      <Suspense fallback={<PageSkeleton />}>
+        <RecipeView params={params} />
+      </Suspense>
+    </>
+  );
+}
+
+async function RecipeView({ params }: { params: PageProps<"/recipes/[slug]">["params"] }) {
   const { slug } = await params;
   const recipe = getRecipe(slug);
   const sections = recipeSections[slug];
@@ -36,7 +49,6 @@ export default async function RecipePage({ params }: PageProps<"/recipes/[slug]"
 
   return (
     <>
-      <SiteHeader />
       <Showroom
         title={recipe.name}
         styleName={style?.name ?? recipe.styleId}

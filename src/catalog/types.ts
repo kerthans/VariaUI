@@ -17,6 +17,8 @@ export interface StyleEntry {
     motion: string;
     mood: string;
   };
+  palette: { name: string; value: string }[];
+  typeface: string;
   avoid: string[];
   status: Status;
 }
