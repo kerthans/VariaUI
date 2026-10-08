@@ -1,12 +1,23 @@
+import type { ReactNode } from "react";
+
 import styles from "./bauhaus-portfolio.module.css";
 import { ManifestoHero } from "./manifesto-hero";
 import { ProjectGrid } from "./project-grid";
 import { SectionIndex } from "./section-index";
 import { cx, theme } from "./theme";
 
-export function BauhausPortfolio() {
-  return (
-    <main className={styles.page}>
+export interface RecipeSection {
+  key: string;
+  /** Registry id of the component this section is built from, if any. */
+  component?: string;
+  render: () => ReactNode;
+}
+
+export const bauhausPortfolioSections: RecipeSection[] = [
+  {
+    key: "hero",
+    component: "bauhaus-manifesto-hero",
+    render: () => (
       <ManifestoHero
         brand="Studio / 001"
         navigation={[
@@ -21,7 +32,12 @@ export function BauhausPortfolio() {
         action={{ label: "View work", href: "#work" }}
         facts={["Identity & Interface", "Independent since 2019", "Booking spring 2027"]}
       />
-
+    ),
+  },
+  {
+    key: "work",
+    component: "bauhaus-project-grid",
+    render: () => (
       <div id="work">
         <ProjectGrid
           eyebrow="01 / Selected Work"
@@ -36,7 +52,12 @@ export function BauhausPortfolio() {
           ]}
         />
       </div>
-
+    ),
+  },
+  {
+    key: "index",
+    component: "bauhaus-section-index",
+    render: () => (
       <div id="index">
         <SectionIndex
           eyebrow="Index / What We Do"
@@ -66,14 +87,30 @@ export function BauhausPortfolio() {
           ]}
         />
       </div>
-
+    ),
+  },
+  {
+    key: "contact",
+    render: () => (
       <footer id="contact" className={cx(theme.root, styles.footer)}>
         <p className={theme.label}>Contact / 04</p>
         <a className={styles.mail} href="mailto:hello@example.com">
           hello@example.com
         </a>
-        <p className={cx(theme.label, styles.note)}>Sample content for the VariaUI Bauhaus Portfolio recipe.</p>
+        <p className={cx(theme.label, styles.note)}>
+          Sample content for the VariaUI Bauhaus Portfolio recipe.
+        </p>
       </footer>
+    ),
+  },
+];
+
+export function BauhausPortfolio() {
+  return (
+    <main className={styles.page}>
+      {bauhausPortfolioSections.map((section) => (
+        <div key={section.key}>{section.render()}</div>
+      ))}
     </main>
   );
 }

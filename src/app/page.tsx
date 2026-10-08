@@ -1,34 +1,50 @@
 import Link from "next/link";
 
-import { recipes } from "@/catalog/recipes";
+import { SiteHeader } from "@/components/site/site-header";
+import { allStyles, componentsForStyle, recipesForStyle } from "@/lib/catalog";
+
+function plural(count: number, noun: string) {
+  return `${count} ${noun}${count === 1 ? "" : "s"}`;
+}
 
 export default function Home() {
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center gap-6 px-6 py-24">
-      <p className="text-sm text-muted-foreground">Early exploration</p>
-      <h1 className="text-4xl font-semibold tracking-tight">VariaUI</h1>
-      <p className="text-lg text-muted-foreground">
-        Discover by style. Build with character.
-      </p>
-      <ul className="flex flex-col gap-2 text-sm">
-        {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <Link
-              href={`/recipes/${recipe.id}`}
-              className="font-medium underline underline-offset-4"
-            >
-              {recipe.name}
-            </Link>
-            <span className="text-muted-foreground"> — {recipe.scenario}</span>
-          </li>
-        ))}
-      </ul>
-      <a
-        href="https://github.com/kerthans/VariaUI"
-        className="text-sm font-medium underline underline-offset-4"
-      >
-        GitHub
-      </a>
-    </main>
+    <>
+      <SiteHeader />
+      <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-16 px-6 py-24">
+        <div className="max-w-2xl">
+          <p className="text-sm text-muted-foreground">Early exploration</p>
+          <h1 className="mt-2 text-4xl font-semibold tracking-tight">
+            Discover by style. Build with character.
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Start with a style, walk through a complete page, then take the pieces you want.
+          </p>
+        </div>
+
+        <section aria-labelledby="styles">
+          <h2 id="styles" className="text-sm font-medium text-muted-foreground">
+            Styles
+          </h2>
+          <ul className="mt-3 grid gap-4 sm:grid-cols-2">
+            {allStyles.map((style) => (
+              <li key={style.id}>
+                <Link
+                  href={`/styles/${style.id}`}
+                  className="block rounded-xl border p-5 transition-colors hover:bg-muted/50"
+                >
+                  <p className="font-medium">{style.name}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{style.tagline}</p>
+                  <p className="mt-4 text-xs text-muted-foreground">
+                    {plural(recipesForStyle(style.id).length, "room")} ·{" "}
+                    {plural(componentsForStyle(style.id).length, "piece")}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+    </>
   );
 }
